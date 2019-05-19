@@ -13975,43 +13975,18 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-Adaboost:</p>
-<p>Main advantages</p>
-<p>A.Parameterization is quite simple, even a very simple weak-predictor may allow the training of a strong model at the end (for</p>
-<p>B.instance: having a decision stump as a weak predictor may lead to great performance!)</p>
-<p>C.Robust to overfitting (as it’s a serial approach, it can be optimized for prediction)</p>
-<p>D.Performs well for large amounts of data</p>
-<p>Main drawbacks:</p>
-<p>A.Training may be time consuming (especially if we train, on top of it, an optimization approach for the prediction, such as a</p>
-<p>B.Cascade or a Soft-Cascade approach)</p>
-<p>C.May take a lot of memory, depending on the weak-predict</p>
-<p><a href="https://cai.tools.sap/blog/machine-learning-algorithms/">https://cai.tools.sap/blog/machine-learning-algorithms/</a></p>
+<p>Random Forest Classifier:</p>
+<p>Random Forest can be used to improve the personalization technology of Netflix for example.</p>
+<p>The model is easy to use. It can very easily handle categorical variables that do not expect linear features or even features that interact linearly. The model also handles high dimensional spaces very well, as well as large numbers of training examples. Finally, it's less likely to overfit than a decision tree. However, it's more difficult to interpret a Random Forest than a Decision Tree.</p>
+<p>We should apply this model because it's easy to use, handles categorical variables very well, and is not prone to overfitting like traditional decision trees.</p>
 <p>Naive Bayes:</p>
-<p>Real World Application:</p>
-<p>Naive Bayes algorithms are used for document classifications. It is a popular algorithm in news agencies where related news links are provided for every article. <a href="https://www.quora.com/In-what-real-world-applications-is-Naive-Bayes-classifier-used">https://www.quora.com/In-what-real-world-applications-is-Naive-Bayes-classifier-used</a></p>
-<p>Main advantages:</p>
-<p>A.Naive Bayes algorithm is easy to understand and implement.</p>
-<p>B.They are quick to train and predict results</p>
-<p>C.They create great baseline model through which we can have an idea of direction.</p>
-<p>Main drawbacks:</p>
-<p>A.Simplistic nature can yield bad generalizations or suboptimal solutions</p>
-<p>B.Doesn't account for interactions between features</p>
-<p>C.There is a high bias when there is a small amount of data</p>
-<p>RandomForest:
-Real World Application:
-Random Forest can be used to improve the personalization technology of Netflix for example.
-<a href="http://blog.udacity.com/2016/06/machine-learning-everywhere-netflix-personalized-medicine-fraud-prevention.html">http://blog.udacity.com/2016/06/machine-learning-everywhere-netflix-personalized-medicine-fraud-prevention.html</a></p>
-<p>A.The model is easy to use.</p>
-<p>B.It can very easily handle categorical variables that do not expect linear features or even features that interact linearly.</p>
-<p>C.The model also handles high dimensional spaces very well as well as large numbers of training examples.</p>
-<p>D.Finally, it's less likely to overfit than a decision tree. However, it's more difficult to interpret a Random Forest than a Decision Tree.</p>
-<p>Main drawbacks:
-A. overfiting
-B. can be unstable because of small variations in the data
-C. you might get a bais trees , you should balance your dataset</p>
-<p>What makes this model a good candidate for the problem, given what you know about the data?
-We can apply this model because it's a medium dataset (45 222 records). The model can be slow to train, however it shouldn't matter because we probably want to run the model periodically and not in real-time.</p>
+<p>Naive Bayes is often used for spam filtering.</p>
+<p>The model performs very well when there are lot of features, and it's simple and easy to understand. However the disadvantage of the model is that it makes a strong assumption about the independance of the features.</p>
+<p>The dataset includes 103 features after one-hot encoding. Because Naive Bayes provides good performance when there are lot of features, we should apply this model.</p>
+<p>Adaboost:</p>
+<p>Adaboost can be used for face detection.</p>
+<p>Adaboost is a powerfull classification algorithm that tends to be very adaptive. It can capture very complex decision boundaries. Another advantage, it doesn't require to tweak lot of parameters. However, the algorithm tends to be sensitive to noisy data and outliers. It can also be slow to train.</p>
+<p>We can apply this model because it's a medium dataset (45 222 records). The model can be slow to train, however it shouldn't matter because we probably want to run the model periodically and not in real-time.</p>
 
 </div>
 </div>
@@ -14285,8 +14260,21 @@ The Adaboost combines weak learner a.k.a. base learner (D1, D2 and D3) to form a
 <p>Step 1: The base learner takes all the distributions and assign equal weight (D1) or attention to each observation.</p>
 <p>Step 2: If there is any prediction error caused by first base learning algorithm, then we pay higher attention to observations having prediction error. Then, we apply the next base learning algorithm.</p>
 <p>Step 3: Iterate Step 2 till the limit of base learning algorithm is reached or higher accuracy is achieved.</p>
-<p>Finally, it combines the outputs from weak learner and creates a strong learner which eventually improves the prediction power of the model. Boosting pays higher focus on examples which are mis-classiﬁed or have higher errors by preceding weak rules.
-<a href="https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/">https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/</a></p>
+<p>Finally, it combines the outputs from weak learner and creates a strong learner which eventually improves the prediction power of the model. Boosting pays higher focus on examples which are mis-classiﬁed or have higher errors by
+preceding weak rules.
+<a href="https://www.analyticsvidhya.com/wp-content/uploads/2015/11/bigd.png">https://www.analyticsvidhya.com/wp-content/uploads/2015/11/bigd.png</a>
+This diagram aptly explains Ada-boost. Let’s understand it closely:</p>
+<p>Box 1: You can see that we have assigned equal weights to each data point and applied a decision stump to classify them as + (plus) or – (minus). The decision stump (D1) has generated vertical line at left side to classify the data points. We see that, this vertical line has incorrectly predicted three + (plus) as – (minus). In such case, we’ll assign higher weights to these three + (plus) and apply another decision stump.</p>
+<p><a href="https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd1-e1526989432375.png">https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd1-e1526989432375.png</a>
+Box 2: Here, you can see that the size of three incorrectly predicted + (plus) is bigger as compared to rest of the data points. In this case, the second decision stump (D2) will try to predict them correctly. Now, a vertical line (D2) at right side of this box has classified three mis-classified + (plus) correctly. But again, it has caused mis-classification errors. This time with three -(minus). Again, we will assign higher weight to three – (minus) and apply another decision stump.
+<a href="https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd2-e1526989487878.png">https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd2-e1526989487878.png</a>
+Box 3: Here, three – (minus) are given higher weights. A decision stump (D3) is applied to predict these mis-classified observation correctly. This time a horizontal line is generated to classify + (plus) and – (minus) based on higher weight of mis-classified observation.</p>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2015/11/dd3.png">https://www.analyticsvidhya.com/wp-content/uploads/2015/11/dd3.png</a>
+Box 4: Here, we have combined D1, D2 and D3 to form a strong prediction having complex rule as compared to individual weak learner. You can see that this algorithm has classified these observation quite well as compared to any of individual weak learner.</p>
+<p><a href="https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd4-e1526551014644.png">https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2015/11/dd4-e1526551014644.png</a></p>
+<p>AdaBoost (Adaptive Boosting) : It works on similar method as discussed above. It fits a sequence of weak learners on different weighted training data. It starts by predicting original data set and gives equal weight to each observation. If prediction is incorrect using the first learner, then it gives higher weight to observation which have been predicted incorrectly. Being an iterative process, it continues to add learner(s) until a limit is reached in the number of models or accuracy.</p>
+<p>Mostly, we use decision stamps with AdaBoost. But, we can use any machine learning algorithms as base learner if it accepts weight on training data set. We can use AdaBoost algorithms for both classification and regression problem.</p>
+<p><a href="https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/">https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/</a></p>
 
 </div>
 </div>
